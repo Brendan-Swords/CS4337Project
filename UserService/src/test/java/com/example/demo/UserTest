@@ -1,0 +1,67 @@
+package com.example.demo.service;
+
+import com.example.demo.dto.UserDTO;
+import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+public class UserServiceTest {
+
+    @InjectMocks
+    private UserService userService;
+
+    @Mock
+    private UserRepository userRepository;
+
+    public UserServiceTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testGetAllUsers() {
+        when(userRepository.findAll()).thenReturn(Arrays.asList(new User(1L, "John Doe", "john@example.com")));
+
+        assertEquals(1, userService.getAllUsers().size());
+    }
+
+    @Test
+    public void testGetUserById() {
+        when(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, "John Doe", "john@example.com")));
+
+        assertEquals("John Doe", userService.getUserById(1L).getName());
+    }
+
+    @Test
+    public void testCreateUser() {
+        User user = new User(1L, "John Doe", "john@example.com");
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        UserDTO userDTO = new UserDTO(null, "John Doe", "john@example.com");
+        assertEquals("John Doe", userService.createUser(userDTO).getName());
+    }
+
+    @Test
+    public void testUpdateUser() {
+        User user = new User(1L, "John Doe", "john@example.com");
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        UserDTO userDTO = new UserDTO(null, "John Smith", "johnsmith@example.com");
+        assertEquals("John Smith", userService.updateUser(1L, userDTO).getName());
+    }
+
+    @Test
+    public void testDeleteUser() {
+        userService.deleteUser(1L);
+        verify(userRepository, times(1)).deleteById(1L);
+    }
+}
