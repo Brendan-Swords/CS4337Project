@@ -11,19 +11,18 @@ import java.util.Set;
 
 @Entity
 @Data //To auto generate getters and setters (however the getters don't seem to work when called in code).
-@Table(name = "books")
+@Table(name = "PublishedBooks")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book
+public class PublishedBook
 {
     @Id
     @Column(name = "ISBN")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer isbn;
 
-    @ManyToOne
-    @JoinColumn(name = "PublisherID", nullable = false)
-    private User publisher;
+    @Column(name = "Publisher", nullable = false)
+    private String publisher;
 
     @Column(name = "Title", nullable = false)
     private String title;
@@ -31,18 +30,15 @@ public class Book
     @Column(name = "Description")
     private String description;
 
-    @Column(name = "Price", precision = 10, scale = 2)
+    @Column(name = "Price", precision = 10, scale = 2, nullable = false)
     private BigDecimal price;
-
-    @ManyToMany(mappedBy = "purchasedBooks")
-    private Set<User> buyers = new HashSet<>();
 
     /**
      * The Getter for the books ID(ISBN). A second getter is added because Lombok getters cannot be compiled.
      * @return the book's ISBN.
      */
-    public int GetId()
+    public int GetIsbn()
     {
-        return this.id;
+        return this.isbn;
     }
 }
