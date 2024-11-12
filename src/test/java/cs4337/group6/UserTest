@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserDTO;
-import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
+import controller.cs4337.group6.User;
+import repository.cs4337.group6.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
