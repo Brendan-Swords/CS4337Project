@@ -1,7 +1,7 @@
 package cs4337.group6.Controllers;
 
-import cs4337.group6.Models.User;
-import cs4337.group6.Services.UserService;
+import cs4337.group6.OrderService.Models.User;
+import cs4337.group6.OrderService.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
