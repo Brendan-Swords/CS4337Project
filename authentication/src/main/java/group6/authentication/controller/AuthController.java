@@ -10,6 +10,7 @@ import group6.authentication.service.AuthService;
 import group6.authentication.dto.RefreshTokenRequest;
 import group6.authentication.exception.InvalidTokenException;
 
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

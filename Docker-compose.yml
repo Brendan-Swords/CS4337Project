@@ -1,16 +1,14 @@
-version: '3.8'
-
 services:
   app:
     build:
-      context: .
-      dockerfile: UserService/Dockerfile
+      context: ./authentication
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bookshop?useSSL=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: your_mysql_password
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - db
 
@@ -18,7 +16,12 @@ services:
     image: mysql:8.0
     restart: always
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: your_mysql_password
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: bookshop
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
