@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 version: '3.8'
 
 services:
@@ -22,3 +23,45 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: your_mysql_password
       MYSQL_DATABASE: bookshop
+=======
+services:
+  publishing-service:
+    build:
+      context: ./MicroServices/PublishingService
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bookstore
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - db
+
+  order-service:
+    build:
+      context: ./MicroServices/OrderService
+    ports:
+      - "8082:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3307/orders
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - db2
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: bookstore
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+
+  db2:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: orders
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3307:3306"
+>>>>>>> Stashed changes
