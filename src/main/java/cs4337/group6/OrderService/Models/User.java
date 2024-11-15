@@ -1,4 +1,4 @@
-package cs4337.group6.Models;
+package cs4337.group6.OrderService.Models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

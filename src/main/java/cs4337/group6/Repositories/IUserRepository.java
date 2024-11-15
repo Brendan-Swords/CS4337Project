@@ -1,6 +1,6 @@
 package cs4337.group6.Repositories;
 
-import cs4337.group6.Models.User;
+import cs4337.group6.OrderService.Models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

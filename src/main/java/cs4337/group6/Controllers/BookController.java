@@ -1,7 +1,7 @@
 package cs4337.group6.Controllers;
 
-import cs4337.group6.Models.Book;
-import cs4337.group6.Services.BookService;
+import cs4337.group6.OrderService.Models.Book;
+import cs4337.group6.OrderService.Services.BookService;
 import cs4337.group6.Utility.PostmanResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

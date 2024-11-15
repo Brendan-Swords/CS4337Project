@@ -1,6 +1,6 @@
 package cs4337.group6.Repositories;
 
-import cs4337.group6.Models.Book;
+import cs4337.group6.OrderService.Models.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -1,6 +1,6 @@
-package cs4337.group6.Services;
+package cs4337.group6.OrderService.Services;
 
-import cs4337.group6.Models.User;
+import cs4337.group6.OrderService.Models.User;
 import cs4337.group6.Repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
