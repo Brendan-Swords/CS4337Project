@@ -42,16 +42,6 @@ public class ApiGateway {
         }
     }
 
-    @PostMapping("/catalog")
-    public ResponseEntity<String> catalogRequest(@RequestBody String request) {
-        try {
-            return restTemplate.postForEntity(baseUrl + "/catalog", request, String.class);
-        } catch (RestClientException e) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                    .body("Failed to reach catalog service: " + e.getMessage());
-        }
-    }
-
     @PostMapping("/order")
     public ResponseEntity<String> orderRequest(@RequestBody String request) {
         try {
