@@ -40,15 +40,4 @@ public class User {
     {
         return this.id;
     }
-
-    /**
-     *
-     * @return
-     */
-    public Set<Book> GetPublishedBooks()
-    {
-        return purchasedBooks;
-    }
-
-
 }

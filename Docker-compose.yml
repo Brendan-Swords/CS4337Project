@@ -1,29 +1,5 @@
-<<<<<<< Updated upstream
 version: '3.8'
 
-services:
-  app:
-    build:
-      context: .
-      dockerfile: UserService/Dockerfile
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bookshop?useSSL=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: your_mysql_password
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8.0
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: your_mysql_password
-      MYSQL_DATABASE: bookshop
-=======
 services:
   publishing-service:
     build:
@@ -43,11 +19,11 @@ services:
     ports:
       - "8082:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3307/orders
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bookstore
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=
     depends_on:
-      - db2
+      - db
 
   db:
     image: mysql:8.0
@@ -57,11 +33,3 @@ services:
     ports:
       - "3306:3306"
 
-  db2:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: orders
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    ports:
-      - "3307:3306"
->>>>>>> Stashed changes

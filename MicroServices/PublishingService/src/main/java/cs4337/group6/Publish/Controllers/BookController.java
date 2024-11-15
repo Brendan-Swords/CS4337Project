@@ -29,24 +29,24 @@ public class BookController
         {
             Book publishedBook = bookService.AddBook(book, publisherId);
             return ResponseEntity.ok(
-                    new PostmanResponseMessage<>("Book created successfully", HttpStatus.OK.value(), publishedBook));
+                    new PostmanResponseMessage<>("Book published successfully", HttpStatus.OK.value(), publishedBook));
         }
         catch(Exception e)
         {
-            System.err.println("Could not add book due to exception: "  + e.getMessage());
+            System.err.println("Could not publish book due to exception: "  + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new PostmanResponseMessage<>("Failed to create book: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
+                    .body(new PostmanResponseMessage<>("Failed to publish book: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
     }
 
-    @PostMapping("/RemoveBook/{bookId}")
+    @PostMapping(value = "/RemoveBook/{bookId}", produces = "application/json")
     public ResponseEntity<PostmanResponseMessage<Book>> RemoveBook(@PathVariable Integer bookId)
     {
         try
         {
-            Book book = bookService.RemoveBook(bookId);
+            bookService.RemoveBook(bookId);
             return ResponseEntity.ok(
-                    new PostmanResponseMessage<>("Book removed successfully", HttpStatus.OK.value(), book));
+                    new PostmanResponseMessage<>("Book removed successfully", HttpStatus.OK.value(), null));
         }
         catch(Exception e)
         {

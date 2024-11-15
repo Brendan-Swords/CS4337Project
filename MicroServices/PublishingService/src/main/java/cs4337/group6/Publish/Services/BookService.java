@@ -25,14 +25,12 @@ public class BookService
         User publisher = userRepo.findById(publisherId).orElseThrow(() -> new RuntimeException("Publisher not found"));
 
         bookToAdd.setPublisher(publisher);
-        publisher.GetPublishedBooks();
         return repository.save(bookToAdd);
     }
 
-    public Book RemoveBook(Integer bookId)
+    public void RemoveBook(Integer bookId)
     {
         Book book = repository.findById(bookId).orElseThrow(() -> new RuntimeException("Book Not Found"));
         repository.delete(book);
-        return book;
     }
 }

@@ -13,13 +13,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     runtimeOnly 'com.mysql:mysql-connector-j'
-    implementation 'org.projectlombok:lombok:1.18.28' // Latest version of Lombok
-    annotationProcessor 'org.projectlombok:lombok:1.18.28' // Required for processing annotations
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 }
 
 tasks.named('test') {
