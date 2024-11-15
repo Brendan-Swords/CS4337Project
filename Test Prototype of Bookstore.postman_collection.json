@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "5854a6a4-8b78-464d-979c-920fbc25708c",
+		"name": "Test Prototype of Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39681464"
+	},
+	"item": [
+		{
+			"name": "Add First User(userId = 1), UserID increments sequentially",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/AddUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"AddUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Second User(userId = 2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/AddUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"AddUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Third User(userId =3)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/AddUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"AddUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish a book as User 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"My First Book\",\r\n    \"description\": \"This is my first book!\",\r\n    \"price\": 19.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/1/PublishBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"1",
+						"PublishBook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Publish a Book as Invalid User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"My First Book\",\r\n    \"description\": \"This is my first book!\",\r\n    \"price\": 19.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/24242/PublishBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"24242",
+						"PublishBook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Publish a Book with Invalid Body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/1/PublishBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"1",
+						"PublishBook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order as User 2 for User 1's book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":2,\r\n    \"bookId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/CreateOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"CreateOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Create Order for an Invalid User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":2,\r\n    \"bookId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/CreateOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"CreateOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Create Order for an Invalid Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":2,\r\n    \"bookId\":249248284\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/CreateOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"CreateOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the Order you just created",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/DeleteOrder/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"DeleteOrder",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Delete an Order that doesn't exist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/DeleteOrder/9999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"DeleteOrder",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the Book you created earlier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/RemoveBook/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"RemoveBook",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try Delete a book that doesn't exist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/RemoveBook/99999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"RemoveBook",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
