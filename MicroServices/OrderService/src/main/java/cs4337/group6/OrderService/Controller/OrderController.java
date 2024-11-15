@@ -43,7 +43,7 @@ public class OrderController {
         {
             System.err.println("Could not remove Order(ID: " + id + ") due to exception: "  + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new PostmanResponseMessage<>("Failed to remove book: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
+                    .body(new PostmanResponseMessage<>("Failed to remove Order: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
     }
 

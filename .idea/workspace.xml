@@ -5,93 +5,95 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0b6243b-10a1-4590-9454-9afe362bda71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Repository/IBookRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Repository/IUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Utility/PostmanResponseMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Publish.main.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/AuthenticationService/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Services/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Services/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/test/cs4337/group6/OrderService/OrderServiceApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileJava/compileTransaction/stash-dir/OrderController.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileJava/compileTransaction/stash-dir/OrderService.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Controller/OrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Models/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/OrderServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Repository/IBookRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Repository/IOrderRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Repository/IUserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Services/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/classes/java/main/cs4337/group6/OrderService/Utility/PostmanResponseMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/libs/OrderService-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/libs/OrderService-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/resolvedMainClassName" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Services/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/java/cs4337/group6/OrderService/Services/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/OrderService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/OrderService/src/test/java/cs4337/group6/OrderService/OrderServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Controllers/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Controllers/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Services/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Services/BookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/test/cs4337/group6/Publish/PublishApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Controllers/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/PublishApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/PublishApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Controllers/BookController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Controllers/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/8.10.2/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Controllers/BookController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Controllers/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Models/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Models/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/PublishApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Repositories/IBookRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Repositories/IUserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Services/BookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Services/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/classes/java/main/cs4337/group6/Publish/Utility/PostmanResponseMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/libs/Publish-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/libs/Publish-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/resolvedMainClassName" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/out/production/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Controllers/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/PublishApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/PublishingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Repositories/IBookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Repositories/IBookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Repositories/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Repositories/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/Publish/Utility/PostmanResponseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/MicroServices/PublishingService/src/main/java/cs4337/group6/PublishingService/Utility/PostmanResponseMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/DemoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/DemoApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Models/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Models/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Repositories/IBookRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Repositories/IUserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Services/BookService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Services/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cs4337/group6/Utility/PostmanResponseMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/demo-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/Controllers/BookController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/Controllers/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs4337/group6/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/OrderService/Models/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/OrderService/Models/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/OrderService/Services/BookService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/OrderService/Services/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/Repositories/IBookRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/Repositories/IUserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs4337/group6/Utility/PostmanResponseMessage.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +105,9 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/MicroServices/OrderService">
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/MicroServices/PublishingService">
@@ -132,6 +137,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -143,24 +156,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build CS4337Project.executor": "Run",
-    "Gradle.Build OrderService.executor": "Run",
-    "Gradle.Build PublishingService.executor": "Run",
-    "Gradle.OrderService [:OrderServiceApplication.main()].executor": "Debug",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.PublishApplication.executor": "Run",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MicroServices/PublishingService" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\CS4337Project\MicroServices\OrderService" />
@@ -176,7 +181,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PublishApplication">
+  <component name="RunManager" selected="Application.OrderService">
     <configuration name="OrderService" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -199,23 +204,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="Bookstore.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="cs4337.group6.DemoApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PublishApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="Publish.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="cs4337.group6.Publish.PublishApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OrderService/Dockerfile" type="docker-deploy" factoryName="dockerfile">
       <deployment type="dockerfile">
         <settings>
+          <option name="containerName" value="" />
           <option name="sourceFilePath" value="MicroServices/OrderService/Dockerfile" />
         </settings>
       </deployment>
@@ -224,8 +216,6 @@
     <list>
       <item itemvalue="Application.OrderService" />
       <item itemvalue="Docker.OrderService/Dockerfile" />
-      <item itemvalue="Spring Boot.DemoApplication" />
-      <item itemvalue="Spring Boot.PublishApplication" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -247,6 +237,10 @@
       <workItem from="1731448515850" duration="2656000" />
       <workItem from="1731509504634" duration="794000" />
       <workItem from="1731599045501" duration="244000" />
+      <workItem from="1731674881803" duration="5499000" />
+      <workItem from="1731683378483" duration="92000" />
+      <workItem from="1731683563156" duration="61000" />
+      <workItem from="1731683713328" duration="3087000" />
     </task>
     <servers />
   </component>
@@ -263,6 +257,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
