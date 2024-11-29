@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class OrderService {
 
@@ -32,5 +34,10 @@ public class OrderService {
     public void DeleteOrder(Integer id) {
         Order orderToDelete = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order Not Found"));;
         orderRepository.delete(orderToDelete);
+    }
+
+    public List<Order> GetAllOrders()
+    {
+        return orderRepository.findAll();
     }
 }
