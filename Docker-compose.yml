@@ -1,5 +1,17 @@
 
 services:
+  authentication-service:
+    build:
+      context: ./MicroServices/AuthenticationService
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bookstore
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - db
+
   publishing-service:
     build:
       context: ./MicroServices/PublishingService

@@ -1,8 +1,10 @@
 package cs4337.group6.AuthenticationService.Services;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
@@ -13,6 +15,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 @Service
 public class JWTService
@@ -49,9 +52,42 @@ public class JWTService
                 .compact();
     }
 
-    private Key GetKey()
+    private SecretKey GetKey()
     {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    public String ExtractUserName(String token)
+    {
+        // extract the username from jwt token
+        return ExtractClaim(token, Claims::getSubject);
+    }
+
+    private <T> T ExtractClaim(String token, Function<Claims, T> claimResolver) {
+        final Claims claims = ExtractAllClaims(token);
+        return claimResolver.apply(claims);
+    }
+
+    private Claims ExtractAllClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(GetKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    public boolean ValidateToken(String token, UserDetails userDetails)
+    {
+        final String userName = ExtractUserName(token);
+        return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    private boolean isTokenExpired(String token) {
+        return ExtractExpiration(token).before(new Date());
+    }
+
+    private Date ExtractExpiration(String token) {
+        return ExtractClaim(token, Claims::getExpiration);
     }
 }
