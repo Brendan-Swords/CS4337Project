@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("api/orders")
 @RestController
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("CreateOrder")
+    @PostMapping("/CreateOrder")
     public ResponseEntity<PostmanResponseMessage<Order>> CreateOrder(@RequestBody Order order) {
         try
         {
@@ -56,7 +57,7 @@ public class OrderController {
         {
             List<Order> orders = orderService.GetAllOrders();
             return ResponseEntity.ok(
-                    new PostmanResponseMessage<>("Got a list of orders successfully", HttpStatus.OK.value(), orders));
+                    new PostmanResponseMessage<>("Got a list of Orders successfully", HttpStatus.OK.value(), orders));
         }
         catch(Exception e)
         {

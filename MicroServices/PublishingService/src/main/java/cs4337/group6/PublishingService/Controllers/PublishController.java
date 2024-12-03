@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/api/publishing")
 @RestController
 public class PublishController
 {
@@ -68,7 +69,7 @@ public class PublishController
         {
             System.err.println("Could not get the list of Published Books due to exception: "  + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new PostmanResponseMessage<>("Could not get a lit of published books due to exception: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
+                    .body(new PostmanResponseMessage<>("Could not get a list of Published Books due to exception: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
     }
 
