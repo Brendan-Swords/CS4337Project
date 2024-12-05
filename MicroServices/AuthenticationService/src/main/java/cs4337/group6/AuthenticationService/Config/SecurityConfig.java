@@ -40,13 +40,9 @@ public class SecurityConfig
                .csrf(csrf -> csrf.disable()// Disable CSRF as we are using JWT.
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/Register", "/Login", "/User", "/Users").permitAll() // Allow public endpoints and register/login page.
+                        .requestMatchers("/public/**", "/Register", "/Login").permitAll() // Allow public endpoints and register/login page.
                         .anyRequest().authenticated()  // Protect everything else.
                 )
-//                .formLogin(form -> form
-//                        .loginPage("/api/login") // Custom login page.
-//                        .permitAll() // Allow access to the login page.
-//                )
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -63,15 +59,6 @@ public class SecurityConfig
     public PasswordEncoder PasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    @Bean
-//    public UserDetailsService UserDetailsService() {
-//        UserDetails user = User.withUsername("TEST")
-//                .password(PasswordEncoder().encode("TEST"))
-//                .roles("ADMINS")
-//                .build();
-//        return new InMemoryUserDetailsManager(user);
-//    }
 
     @Bean
     public AuthenticationProvider AuthenticationProvider()
