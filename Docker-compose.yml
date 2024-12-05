@@ -1,18 +1,5 @@
 
 services:
-  api-gateway:
-    container_name: api-gateway
-    build:
-      context: ./MicroServices/ApiGateway
-    ports:
-      - "8083:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bookstore
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
-    depends_on:
-      - db
-
   authentication-service:
     container_name: authentication-service
     build:

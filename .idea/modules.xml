@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AuthenticationService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/AuthenticationService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bookstore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Bookstore.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/OrderService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/OrderService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PublishingService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PublishingService.main.iml" />

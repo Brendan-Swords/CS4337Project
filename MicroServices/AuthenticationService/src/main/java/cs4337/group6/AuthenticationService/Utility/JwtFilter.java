@@ -2,55 +2,63 @@ package cs4337.group6.AuthenticationService.Utility;
 
 import cs4337.group6.AuthenticationService.Services.AuthUserDetailsService;
 import cs4337.group6.AuthenticationService.Services.JWTService;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import java.io.IOException;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.server.WebFilter;
+import org.springframework.web.server.WebFilterChain;
+import reactor.core.publisher.Mono;
 
 @Component
-public class JwtFilter extends OncePerRequestFilter
-{
+public class JwtFilter implements WebFilter {
 
     @Autowired
     private JWTService jwtService;
 
     @Autowired
-    private ApplicationContext context;
+    private AuthUserDetailsService userDetailsService; // Use direct injection for clarity
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
-    {
-        String authHeader = request.getHeader("Authorization");
-        String token = null;
-        String username = null;
+    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+        String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
 
-        if(authHeader != null && authHeader.startsWith("Bearer "))
-        {
-            token = authHeader.substring(7); //authHeader will be Bearer {token} and we just want the token so start from char 7.
-            username = jwtService.ExtractUserName(token);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            // If no valid Authorization header, continue the filter chain
+            return chain.filter(exchange);
         }
 
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null)
-        {
-            UserDetails userDetails = context.getBean(AuthUserDetailsService.class).loadUserByUsername(username);
-            if(jwtService.ValidateToken(token, userDetails))
-            {
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
+        String token = authHeader.substring(7); // Extract the token
+        String username = jwtService.ExtractUserName(token);
+
+        if (username == null) {
+            // If username is null, continue the chain
+            return chain.filter(exchange);
         }
 
-        filterChain.doFilter(request, response);
+        return userDetailsService.findByUsername(username)
+                .flatMap(userDetails -> {
+                    if (jwtService.ValidateToken(token, userDetails)) {
+                        UsernamePasswordAuthenticationToken authentication =
+                                new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
+                        SecurityContext securityContext = new SecurityContextImpl(authentication);
+
+                        // Attach security context and proceed with the chain
+                        return chain.filter(exchange)
+                                .contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
+                    }
+                    // If token is invalid, continue the chain without authentication
+                    return chain.filter(exchange);
+                })
+                .onErrorResume(e -> {
+                    // Handle errors (e.g., UsernameNotFoundException)
+                    return chain.filter(exchange);
+                });
     }
 }

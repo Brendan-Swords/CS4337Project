@@ -1,54 +1,58 @@
 package cs4337.group6.AuthenticationService.Config;
 
+import cs4337.group6.AuthenticationService.Services.JWTService;
 import cs4337.group6.AuthenticationService.Utility.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
+import org.springframework.security.web.server.authentication.ServerAuthenticationConverter;
+import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
+import reactor.core.publisher.Mono;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig
-{
-    @Autowired
-    private UserDetailsService userDetailsService;
+public class SecurityConfig {
+
+    private final JwtFilter jwtFilter;
 
     @Autowired
-    private JwtFilter jwtFilter;
+    private ReactiveUserDetailsService userDetailsService;
 
-    private AuthenticationConfiguration authenticationConfiguration;
+    @Autowired
+    private JWTService jwtService;
+
+    public SecurityConfig(JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
-               .csrf(csrf -> csrf.disable()// Disable CSRF as we are using JWT.
+                .csrf(ServerHttpSecurity.CsrfSpec::disable) // Disable CSRF
+                .authorizeExchange(exchanges -> exchanges
+                        .pathMatchers("/public/**", "/Register", "/Login").permitAll() // Allow public endpoints
+                        .anyExchange().authenticated() // Protect all other endpoints
                 )
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/Register", "/Login").permitAll() // Allow public endpoints and register/login page.
-                        .anyRequest().authenticated()  // Protect everything else.
-                )
-                .httpBasic(Customizer.withDefaults())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
+                .addFilterAt(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);; // Stateless security context
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        this.authenticationConfiguration = authenticationConfiguration;
-        return authenticationConfiguration.getAuthenticationManager();
+    public ReactiveAuthenticationManager reactiveAuthenticationManager(ReactiveUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        UserDetailsRepositoryReactiveAuthenticationManager manager = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
+        manager.setPasswordEncoder(passwordEncoder);
+        return manager;
     }
 
     @Bean
@@ -57,11 +61,59 @@ public class SecurityConfig
     }
 
     @Bean
-    public AuthenticationProvider AuthenticationProvider()
-    {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(this.passwordEncoder());
-        provider.setUserDetailsService(this.userDetailsService);
-        return provider;
+    public AuthenticationWebFilter jwtWebFilter() {
+        AuthenticationWebFilter webFilter = new AuthenticationWebFilter(jwtAuthenticationManager());
+        webFilter.setServerAuthenticationConverter(jwtAuthenticationConverter());
+        webFilter.setSecurityContextRepository(NoOpServerSecurityContextRepository.getInstance());
+        return webFilter;
     }
+
+    private ReactiveAuthenticationManager jwtAuthenticationManager() {
+        return authentication -> {
+            if (!(authentication instanceof UsernamePasswordAuthenticationToken)) {
+                return Mono.error(new IllegalArgumentException("Unsupported authentication type"));
+            }
+
+            String token = (String) authentication.getCredentials();
+
+            // Extract username from the token
+            String username = jwtService.ExtractUserName(token);
+
+            // Load user details and validate the token
+            return userDetailsService.findByUsername(username)
+                    .flatMap(userDetails -> {
+                        if (!jwtService.ValidateToken(token, userDetails)) {
+                            return Mono.error(new IllegalArgumentException("Invalid JWT Token"));
+                        }
+
+                        // Create authenticated token
+                        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                                userDetails, token, userDetails.getAuthorities());
+                        authToken.setDetails(userDetails);
+                        return Mono.just(authToken);
+                    });
+        };
+    }
+
+
+    private ServerAuthenticationConverter jwtAuthenticationConverter() {
+        return exchange -> {
+            String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
+
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return Mono.empty(); // No token, skip authentication
+            }
+
+            String token = authHeader.substring(7); // Extract the token
+
+            // Create an authentication object with the token as credentials
+            return Mono.just(new UsernamePasswordAuthenticationToken(null, token));
+        };
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(ReactiveAuthenticationManager reactiveAuthenticationManager) {
+        return authentication -> reactiveAuthenticationManager.authenticate(authentication).block(); // Bridge to non-reactive
+    }
+
 }
