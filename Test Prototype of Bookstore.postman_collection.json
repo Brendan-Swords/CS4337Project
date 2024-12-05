@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5854a6a4-8b78-464d-979c-920fbc25708c",
+		"_postman_id": "25d7de54-db91-4681-b8e1-6359b7e851d4",
 		"name": "Test Prototype of Bookstore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "39681464"
+		"_exporter_id": "39622350"
 	},
 	"item": [
 		{
@@ -91,6 +91,14 @@
 			"response": []
 		},
 		{
+			"name": "View Published Books -> No books",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
 			"name": "Publish a book as User 1",
 			"request": {
 				"method": "POST",
@@ -116,6 +124,14 @@
 						"PublishBook"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Published Books -> 1 Book added",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		},
@@ -262,6 +278,14 @@
 			"response": []
 		},
 		{
+			"name": "View Orders",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
 			"name": "Delete the Order you just created",
 			"request": {
 				"method": "POST",
@@ -278,6 +302,14 @@
 						"1"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Orders -> Now your order will be removed from the list of orders",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		},
@@ -316,6 +348,25 @@
 					"path": [
 						"RemoveBook",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Published Books -> Your book removed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/Books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"Books"
 					]
 				}
 			},
