@@ -4,9 +4,9 @@ import cs4337.group6.OrderService.Models.Order;
 import cs4337.group6.OrderService.Services.OrderService;
 import cs4337.group6.OrderService.Utility.PostmanResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -16,11 +16,26 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @PostMapping("/CreateOrder")
     public ResponseEntity<PostmanResponseMessage<Order>> CreateOrder(@RequestBody Order order) {
         try
         {
-            Order savedOrder = orderService.CreateOrder(order);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Internal-Request", "true");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "http://authentication-service:8080/auth/Username",
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
+
+            String username = response.getBody();
+
+            Order savedOrder = orderService.CreateOrder(order, username);
             return ResponseEntity.ok(
                     new PostmanResponseMessage<>("Order created successfully", HttpStatus.OK.value(), savedOrder));
         }
@@ -32,12 +47,24 @@ public class OrderController {
         }
     }
 
-    @PostMapping(value = "/DeleteOrder/{id}", produces = "application/json")
+    @PostMapping(value = "/CancelOrder/{id}", produces = "application/json")
     public ResponseEntity<PostmanResponseMessage<Order>> DeleteOrder(@PathVariable Integer id)
     {
         try
         {
-            orderService.DeleteOrder(id);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Internal-Request", "true");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "http://authentication-service:8080/auth/Username",
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
+
+            String username = response.getBody();
+
+            orderService.DeleteOrder(id, username);
             return ResponseEntity.ok(
                     new PostmanResponseMessage<>("Order removed successfully", HttpStatus.OK.value(), null));
         }
@@ -46,6 +73,35 @@ public class OrderController {
             System.err.println("Could not remove Order(ID: " + id + ") due to exception: "  + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new PostmanResponseMessage<>("Failed to remove Order: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
+        }
+    }
+
+    @PostMapping(value = "/CompleteOrder/{id}", produces = "application/json")
+    public ResponseEntity<PostmanResponseMessage<Order>> CompleteOrder(@PathVariable Integer id)
+    {
+        try
+        {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Internal-Request", "true");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "http://authentication-service:8080/auth/Username",
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
+
+            String username = response.getBody();
+
+            String orderResponse = orderService.CompleteOrder(id, username);
+            return ResponseEntity.ok(
+                    new PostmanResponseMessage<>(orderResponse, HttpStatus.OK.value(), null));
+        }
+        catch(Exception e)
+        {
+            System.err.println("Could not fulfill Order(ID: " + id + ") due to exception: "  + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new PostmanResponseMessage<>("Failed to fulfill Order: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
     }
 

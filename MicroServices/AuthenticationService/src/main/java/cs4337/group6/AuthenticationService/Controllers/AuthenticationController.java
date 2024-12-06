@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RequestMapping("/auth")
 @RestController
@@ -22,13 +24,19 @@ public class AuthenticationController
     private UserService userService;
 
     @GetMapping("/User")
-    public Principal User(Principal principal)
+    public ResponseEntity<Principal> User(Principal principal)
     {
         System.out.println("Username: " + principal.getName());
-        return principal;
+        return ResponseEntity.ok(principal);
     }
 
-    @GetMapping(value = "/Users")
+    @GetMapping("/Username")
+    public ResponseEntity<String> Username(Principal principal)
+    {
+        return ResponseEntity.ok(principal.getName());
+    }
+
+    @GetMapping("/Users")
     public Mono<ResponseEntity<PostmanResponseMessage<List<User>>>> GetAllUsers() {
         return userService.getAllUsers()
                 .collectList() // Collect Flux<User> into a List<User>

@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .anyExchange().authenticated() // Protect all other endpoints
                 )
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
-                .addFilterAt(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);; // Stateless security context
+                .addFilterAt(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION); // Stateless security context
         return http.build();
     }
 

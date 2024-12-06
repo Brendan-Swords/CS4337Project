@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface IUserRepository extends JpaRepository<User, Integer> //Integer is the datatype of primary key.
 {
-
+    User findByUsername(String username);
 }

@@ -16,9 +16,17 @@ public class LoginController {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     @PostMapping("/Register")
-    public Mono<User> register(@RequestBody User user) {
-        user.setPassword(encoder.encode(user.getPassword()));
-        return userService.register(user);
+    public Mono<String> register(@RequestBody User user) {
+        try
+        {
+            user.setPassword(encoder.encode(user.getPassword()));
+            userService.register(user);
+            return Mono.just("Successfully Registered as User: " + user.getUsername());
+        }
+        catch(Exception e)
+        {
+            return Mono.just("Failed to Register due to Error: " + e.getMessage());
+        }
     }
 
     @PostMapping("/Login")
