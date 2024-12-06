@@ -44,7 +44,7 @@ public class Book
     @Column(name = "Description")
     private String description;
 
-    @Column(name = "Price", precision = 10, scale = 2)
+    @Column(name = "Price", precision = 10, scale = 2, nullable = false)
     private BigDecimal price;
 
     @ManyToMany(mappedBy = "purchasedBooks")
