@@ -2,13 +2,20 @@ package cs4337.group6.AuthenticationService.Services;
 
 import cs4337.group6.AuthenticationService.Models.User;
 import cs4337.group6.AuthenticationService.Repositories.IUserRepository;
+import cs4337.group6.AuthenticationService.Utility.PostmanResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class UserService {
@@ -37,6 +44,7 @@ public class UserService {
         return isVerified(user)
                 .flatMap(isAuthenticated -> {
                     if (isAuthenticated) {
+
                         return Mono.just(jwtService.GenerateToken(user.getUsername()));
                     } else {
                         return Mono.just("N/A");

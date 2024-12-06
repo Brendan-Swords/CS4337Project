@@ -1,5 +1,16 @@
 package cs4337.group6.AuthenticationService.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +33,9 @@ public class Book
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "PublisherID", nullable = false)
+    @JoinColumn(name = "PublisherID")
+    @JsonIgnoreProperties("publishedBooks") // Prevent accessing publishedBooks in User
+    @JsonProperty
     private User publisher;
 
     @Column(name = "Title", nullable = false)
@@ -46,3 +59,4 @@ public class Book
         return this.id;
     }
 }
+

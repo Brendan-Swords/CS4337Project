@@ -4,29 +4,48 @@ import cs4337.group6.PublishingService.Models.Book;
 import cs4337.group6.PublishingService.Services.PublishingService;
 import cs4337.group6.PublishingService.Utility.PostmanResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PublishController
 {
     @Autowired
     private PublishingService bookService;
+    @Autowired
+    private RestTemplate restTemplate;
+
 
     /**
      * The mapping for publishing books via postman.
      * @param book The book to be published.
      * @return The book if published or null.
      */
-    @PostMapping(value = "/{publisherId}/PublishBook", produces = "application/json")
-    public ResponseEntity<PostmanResponseMessage<Book>> AddBook(@RequestBody Book book, @PathVariable Integer publisherId)
+    @PostMapping(value = "/PublishBook", produces = "application/json")
+    public ResponseEntity<PostmanResponseMessage<Book>> AddBook(@RequestBody Book book)
     {
         try
         {
-            Book publishedBook = bookService.PublishBook(book, publisherId);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Internal-Request", "true");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "http://authentication-service:8080/auth/Username",
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
+
+            String username = response.getBody();
+            System.out.println(username);
+
+            Book publishedBook = bookService.PublishBook(book, username);
             return ResponseEntity.ok(
                     new PostmanResponseMessage<>("Book published successfully", HttpStatus.OK.value(), publishedBook));
         }
@@ -43,7 +62,19 @@ public class PublishController
     {
         try
         {
-            bookService.RemoveBook(bookId);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Internal-Request", "true");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "http://authentication-service:8080/auth/Username",
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
+
+            String username = response.getBody();
+
+            bookService.RemoveBook(bookId, username);
             return ResponseEntity.ok(
                     new PostmanResponseMessage<>("Book removed successfully", HttpStatus.OK.value(), null));
         }
@@ -71,5 +102,4 @@ public class PublishController
                     .body(new PostmanResponseMessage<>("Could not get a list of Published Books due to exception: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
     }
-
 }

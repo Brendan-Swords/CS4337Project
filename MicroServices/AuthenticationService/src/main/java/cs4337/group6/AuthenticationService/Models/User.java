@@ -1,10 +1,13 @@
 package cs4337.group6.AuthenticationService.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,19 +23,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "Username")
+    @Column(name = "Username", nullable = false)
     private String username;
 
-    @Column(name = "Password")
+    @Column(name = "Password", nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
+    @JsonIgnore // Exclude from serialization
     private Set<Book> publishedBooks = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
             name = "UserBooks",
-            joinColumns = @JoinColumn(name = "UserID"),
+            joinColumns = @JoinColumn(name = "Username"),
             inverseJoinColumns = @JoinColumn(name = "ISBN")
     )
 
@@ -45,5 +49,9 @@ public class User {
     public int GetId()
     {
         return this.id;
+    }
+
+    public Set<Book> getPublishedBooks() {
+        return Collections.unmodifiableSet(publishedBooks);
     }
 }

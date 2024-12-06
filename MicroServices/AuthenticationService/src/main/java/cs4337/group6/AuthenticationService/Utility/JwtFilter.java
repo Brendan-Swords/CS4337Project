@@ -1,5 +1,6 @@
 package cs4337.group6.AuthenticationService.Utility;
 
+import cs4337.group6.AuthenticationService.Models.User;
 import cs4337.group6.AuthenticationService.Services.AuthUserDetailsService;
 import cs4337.group6.AuthenticationService.Services.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,15 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+import java.security.Principal;
+import java.util.List;
+
 @Component
 public class JwtFilter implements WebFilter {
 
     @Autowired
     private JWTService jwtService;
+    private String currentUsername;
 
     @Autowired
     private AuthUserDetailsService userDetailsService; // Use direct injection for clarity
@@ -27,6 +32,16 @@ public class JwtFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
+        String internalHeader = exchange.getRequest().getHeaders().getFirst("X-Internal-Request");
+
+        if ("true".equalsIgnoreCase(internalHeader)) {
+            // Set a dummy SecurityContext for internal requests
+            SecurityContext securityContext = new SecurityContextImpl(
+                    new UsernamePasswordAuthenticationToken(currentUsername, null, List.of())
+            );
+            return chain.filter(exchange)
+                    .contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
+        }
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             // If no valid Authorization header, continue the filter chain
@@ -40,6 +55,8 @@ public class JwtFilter implements WebFilter {
             // If username is null, continue the chain
             return chain.filter(exchange);
         }
+
+        currentUsername = username;
 
         return userDetailsService.findByUsername(username)
                 .flatMap(userDetails -> {
