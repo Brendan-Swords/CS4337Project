@@ -57,7 +57,7 @@ public class PublishController
         }
     }
 
-    @PostMapping(value = "/RemoveBook/{bookId}", produces = "application/json")
+    @PostMapping(value = "/DelistBook/{bookId}", produces = "application/json")
     public ResponseEntity<PostmanResponseMessage<Book>> RemoveBook(@PathVariable Integer bookId)
     {
         try
