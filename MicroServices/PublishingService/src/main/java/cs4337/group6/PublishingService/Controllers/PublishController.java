@@ -32,17 +32,7 @@ public class PublishController
     {
         try
         {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("X-Internal-Request", "true");
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<String> response = restTemplate.exchange(
-                    "http://authentication-service:8080/auth/Username",
-                    HttpMethod.GET,
-                    entity,
-                    String.class
-            );
-
-            String username = response.getBody();
+            String username = getUsernameFromAuth();
             System.out.println(username);
 
             Book publishedBook = bookService.PublishBook(book, username);
@@ -62,17 +52,7 @@ public class PublishController
     {
         try
         {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("X-Internal-Request", "true");
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<String> response = restTemplate.exchange(
-                    "http://authentication-service:8080/auth/Username",
-                    HttpMethod.GET,
-                    entity,
-                    String.class
-            );
-
-            String username = response.getBody();
+            String username = getUsernameFromAuth();
 
             bookService.RemoveBook(bookId, username);
             return ResponseEntity.ok(
@@ -101,5 +81,20 @@ public class PublishController
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new PostmanResponseMessage<>("Could not get a list of Published Books due to exception: " + e.getMessage(), HttpStatus.BAD_REQUEST.value(), null));
         }
+    }
+
+    private String getUsernameFromAuth() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Internal-Request", "true");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange(
+                "http://authentication-service:8080/auth/Username",
+                HttpMethod.GET,
+                entity,
+                String.class
+        );
+
+        String username = response.getBody();
+        return username;
     }
 }
