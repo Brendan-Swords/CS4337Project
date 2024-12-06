@@ -19,6 +19,8 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     compileOnly 'org.projectlombok:lombok:1.18.28'
     annotationProcessor 'org.projectlombok:lombok:1.18.28'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+
 }
 
 tasks.named('test') {
