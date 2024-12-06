@@ -3,50 +3,54 @@ package cs4337.group6.AuthenticationService.Services;
 import cs4337.group6.AuthenticationService.Models.User;
 import cs4337.group6.AuthenticationService.Repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
-public class UserService
-{
+public class UserService {
+
     @Autowired
     private IUserRepository userRepository;
 
     @Autowired
-    private AuthenticationManager authManager;
+    private ReactiveAuthenticationManager authManager;
 
     @Autowired
     private JWTService jwtService;
 
-    public User Register(User user)
-    {
-        return userRepository.save(user);
+    // Register a new user
+    public Mono<User> register(User user) {
+        return Mono.just(userRepository.save(user)); // Save operation wrapped in a Mono
     }
 
-    public List<User> GetAllUsers()
-    {
-        return userRepository.findAll();
+    // Get all users as a reactive stream
+    public Flux<User> getAllUsers() {
+        return Flux.fromIterable(userRepository.findAll());
     }
 
-    public String GenerateToken(User user)
-    {
-        if(IsVerified(user))
-        {
-            return jwtService.GenerateToken(user.getUsername());
-        }
-        else
-            return "N/A";
+    // Generate a JWT token for a verified user
+    public Mono<String> generateToken(User user) {
+        return isVerified(user)
+                .flatMap(isAuthenticated -> {
+                    if (isAuthenticated) {
+                        return Mono.just(jwtService.GenerateToken(user.getUsername()));
+                    } else {
+                        return Mono.just("N/A");
+                    }
+                });
     }
 
-    private boolean IsVerified(User user)
-    {
-        Authentication authentication =
-                authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+    // Check if a user is verified
+    private Mono<Boolean> isVerified(User user) {
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 
-        return authentication.isAuthenticated();
+        return authManager.authenticate(authenticationToken) // Authenticate reactively
+                .map(Authentication::isAuthenticated)
+                .onErrorResume(e -> Mono.just(false)); // Handle authentication failures gracefully
     }
 }
