@@ -1,0 +1,964 @@
+{
+	"info": {
+		"_postman_id": "25d7de54-db91-4681-b8e1-6359b7e851d4",
+		"name": "Test Prototype of Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39622350"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Handling",
+					"item": [
+						{
+							"name": "Register Yourself with an already taken Username",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Ahmed\",\r\n    \"password\": \"PASSWORD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/Register",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"Register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register Yourself with an invalid body",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"USERNAME\",\r\n    \"passwordfaff\": \"PASSWORD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/Register",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"Register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login with wrong password",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Brian\",\r\n    \"password\": \"WRONGPASSWORD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/Login",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"Login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login to an account that doesn't exist",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"UafaaaaaaaaaaaaaaSERNAMEafafafafwacaascsacwazcawscawcaw\",\r\n    \"password\": \"PASSWORD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/Login",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"Login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Try to access endpoint when unauthorized",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/auth/Users",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Yourself  -> Put desired username and password in Body",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"USERNAME\",\r\n    \"password\": \"PASSWORD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/Register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login -> Replace body appropriately",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"USERNAME\",\r\n    \"password\": \"PASSWORD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Users -> Put JWT Token into Auth Type Bearer Token or use environment variables",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "TEST",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "TEST",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"HI\",\r\n    \"password\":\"TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/public/Register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"public",
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/auth/User",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Account Username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/auth/Username",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"Username"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Register\n\nLogin\n\nView Users\n\nView Current User Details\n\nView Account Username"
+		},
+		{
+			"name": "Publishing",
+			"item": [
+				{
+					"name": "Handling",
+					"item": [
+						{
+							"name": "Try Delist a book that doesn't exist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/DelistBook/99999",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"publishing",
+										"DelistBook",
+										"99999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Try Delist a book that you don't own",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/DelistBook/1",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"publishing",
+										"DelistBook",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Try Publish a Book with Invalid Body",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/PublishBook",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"publishing",
+										"PublishBook"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "View Books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/Books",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"publishing",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish a book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVU0VSTkFNRSIsImlhdCI6MTczMzQ1MzM5OCwiZXhwIjoxNzMzNDU1MTk4fQ.a_D1c6O8HlAcVKyklZ8paLVfCC76fxESLUwHqyi4CoM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My First Book!\",\r\n    \"description\": \"This is an amazing booK!\",\r\n    \"price\": 19.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/publishing/PublishBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"publishing",
+								"PublishBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Published Books after adding your book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"TEST\",\r\n    \"password\": \"TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/auth/Register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"auth",
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish your second book!",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My Second Book!\",\r\n    \"description\": \"This book is way better than my last!\",\r\n    \"price\": 19.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/PublishBook",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"publishing",
+								"PublishBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "De-list your first book -> /bookId (6)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/publishing/DelistBook/6",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"publishing",
+								"DelistBook",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "View books\n\nPublish Books\n\nDe-list Books"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Handling",
+					"item": [
+						{
+							"name": "Try Complete Someone Elses Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/CompleteOrder/1",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"orders",
+										"CompleteOrder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Try Cancel Someone Elses Order Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/CancelOrder/1",
+									"protocol": "https",
+									"host": [
+										"authentication-service-71924298881",
+										"europe-west2",
+										"run",
+										"app"
+									],
+									"path": [
+										"orders",
+										"CancelOrder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "View Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/Orders",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"orders",
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVU0VSTkFNRSIsImlhdCI6MTczMzQ3NTI3MywiZXhwIjoxNzMzNDc3MDczfQ.ICxgG1SpNTl_ltO8jiXGgZ7g_cGKiQ6XIh6MLXdlCqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/orders/CreateOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"orders",
+								"CreateOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Another Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/CreateOrder",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"orders",
+								"CreateOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Orders  - You can see your own orders!",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/Orders",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"orders",
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Your First Order -> /orderId (4)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/CompleteOrder/4",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"orders",
+								"CompleteOrder",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Your 2nd Order -> /orderId (5)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.apporders/CancelOrder/5",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"apporders"
+							],
+							"path": [
+								"CancelOrder",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Orders -> Your orders are gone!",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://authentication-service-71924298881.europe-west2.run.app/orders/Orders",
+							"protocol": "https",
+							"host": [
+								"authentication-service-71924298881",
+								"europe-west2",
+								"run",
+								"app"
+							],
+							"path": [
+								"orders",
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Create Order\n\nCancel Order\n\nComplete Order"
+		}
+	]
+}
