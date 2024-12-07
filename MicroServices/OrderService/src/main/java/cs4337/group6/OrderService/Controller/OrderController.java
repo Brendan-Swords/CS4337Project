@@ -23,17 +23,7 @@ public class OrderController {
     public ResponseEntity<PostmanResponseMessage<Order>> CreateOrder(@RequestBody Order order) {
         try
         {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("X-Internal-Request", "true");
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<String> response = restTemplate.exchange(
-                    "http://authentication-service:8080/auth/Username",
-                    HttpMethod.GET,
-                    entity,
-                    String.class
-            );
-
-            String username = response.getBody();
+            String username = getUsernameFromAuthService();
 
             Order savedOrder = orderService.CreateOrder(order, username);
             return ResponseEntity.ok(
@@ -52,17 +42,7 @@ public class OrderController {
     {
         try
         {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("X-Internal-Request", "true");
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<String> response = restTemplate.exchange(
-                    "http://authentication-service:8080/auth/Username",
-                    HttpMethod.GET,
-                    entity,
-                    String.class
-            );
-
-            String username = response.getBody();
+            String username = getUsernameFromAuthService();
 
             orderService.DeleteOrder(id, username);
             return ResponseEntity.ok(
@@ -81,17 +61,7 @@ public class OrderController {
     {
         try
         {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("X-Internal-Request", "true");
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<String> response = restTemplate.exchange(
-                    "http://authentication-service:8080/auth/Username",
-                    HttpMethod.GET,
-                    entity,
-                    String.class
-            );
-
-            String username = response.getBody();
+            String username = getUsernameFromAuthService();
 
             String orderResponse = orderService.CompleteOrder(id, username);
             return ResponseEntity.ok(
@@ -122,9 +92,18 @@ public class OrderController {
         }
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Order> getOrder(@PathVariable Long id) {
-//        Optional<Order> order = orderService.getOrderById(id);
-//        return order.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-//    }
+    private String getUsernameFromAuthService() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Internal-Request", "true");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange(
+                "http://authentication-service:8080/auth/Username",
+                HttpMethod.GET,
+                entity,
+                String.class
+        );
+
+        String username = response.getBody();
+        return username;
+    }
 }
